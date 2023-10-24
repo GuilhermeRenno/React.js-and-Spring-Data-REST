@@ -2,21 +2,19 @@ package com.greglturnquist.payroll;
 
 import java.util.Objects;
 
-import com.jayway.jsonpath.internal.function.sequence.First;
-import com.jayway.jsonpath.internal.function.sequence.Last;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-@Entity (1)
+@Entity //(1)anotação JPA que denota a classe inteira para armazenamento em uma tabela relacional.
 public class Employee {
-    private @Id @GeneratedValue Long id; (2)
+    private @Id @GeneratedValue Long id;/*  (2) são anotações JPA para anotar a chave primária e que é gerada automaticamente quando necessário.
+    Essa entidade é usada para rastrear informações de funcionários — neste caso, seus nomes e descrições de cargos. */
     private String firstName;
     private String lastName;
     private String description;
 
-    private Employee(){}
+    public Employee(){}
 
     public Employee(String firstName,String lastName,String description){
 
@@ -29,12 +27,12 @@ public class Employee {
     @Override
     public boolean equals(Object o){
         if(this == o) return true;
-         if(o == null || getClass() !=o.getClass()) return false;
-         Employee employee =(Employee) o;
-         return Objects.equals(o, employee.id) &&
-                Objects.equals(o, employee.firstName) &&
-                Objects.equals(o, employee.lastName) &&
-                Objects.equals(o, employee.description);
+        if(o == null || getClass() !=o.getClass()) return false;
+        Employee employee =(Employee) o;
+            return Objects.equals(o, employee.id) &&
+                    Objects.equals(o, employee.firstName) &&
+                    Objects.equals(o, employee.lastName) &&
+                    Objects.equals(o, employee.description);
     }
     
     @Override
